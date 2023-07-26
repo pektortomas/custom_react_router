@@ -1,12 +1,10 @@
-import React from "react";
-import { RouterParams } from "./Router";
+import { Suspense } from "react";
 
 interface RouteProps {
   path: string;
-  children: React.ReactElement;
-  params?: RouterParams;
+  component: any;
 }
 
 export const Route = (props: RouteProps) => {
-  return <>{React.cloneElement(props.children!, { params: props.params })}</>;
+  return <Suspense fallback="...Loading">{props.component}</Suspense>;
 };
